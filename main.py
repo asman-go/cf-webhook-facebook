@@ -1,4 +1,14 @@
+import hashlib
+import hmac
+
 from src.config import Config
+
+
+def x_hub_signature_verify(payload: str, signature: str, config: Config):
+    h = hmac.new( config.FACEBOOK_CLIENT_SECRET, payload, hashlib.sha256 )
+    digest = h.hexdigest()
+    print(digest)
+    print(signature)
 
 
 def verification_request(data, verification_token: str):
@@ -26,6 +36,12 @@ def event_handler(event, context):
                 'statusCode': 200,
                 'body': challenge
             }
+        
+    if 'body' in event and 'headers' in event and 'X-Hub-Signature-256' in event['headers']:
+        body = event['body']
+        signature = event['headers']['X-Hub-Signature-256']
+        x_hub_signature_verify(body, signature, config)
+        
 
     return {
         'statusCode': 401,

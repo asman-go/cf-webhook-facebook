@@ -1,3 +1,4 @@
 Webhook для Facebook Graph API для получения информации о новых доменах
 
-[Facebook Webhook Getting Started](https://developers.facebook.com/docs/graph-api/webhooks/getting-started)
+1. [Facebook Webhook Getting Started](https://developers.facebook.com/docs/graph-api/webhooks/getting-started)
+2. Через дашборд нашего приложения создаем вебхук с verification token (значение передаем через env WEBHOOK_VERIFICATION_TOKEN) и ссылкой на нашу cloud function: `https://developers.facebook.com/apps/<your-facebook-app-id>`
