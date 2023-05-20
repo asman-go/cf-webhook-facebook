@@ -16,6 +16,10 @@ def verification_request(data, verification_token: str):
 
 def event_handler(event, context):
     print(event)
+    return {
+        'statusCode': 200,
+        'body': 'zdraste'
+    }
     config = Config()
     if 'queryStringParameters' in event:
         queryStringParameters = event['queryStringParameters']
