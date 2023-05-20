@@ -5,7 +5,7 @@ from src.config import Config
 
 
 def x_hub_signature_verify(payload: str, signature: str, config: Config):
-    h = hmac.new( config.FACEBOOK_CLIENT_SECRET.encode(), payload, hashlib.sha256 )
+    h = hmac.new( config.FACEBOOK_CLIENT_SECRET.encode(), payload.encode(), hashlib.sha256 )
     digest = h.hexdigest()
     print(digest)
     print(signature)
