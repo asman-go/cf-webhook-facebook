@@ -22,7 +22,10 @@ def event_handler(event, context):
         challenge = verification_request(queryStringParameters, config.WEBHOOK_VERIFICATION_TOKEN)
         if challenge:
             return {
-                'response': challenge
+                'response': {
+                    'statusCode': 200,
+                    'body': challenge
+                }
             }
 
     return {
