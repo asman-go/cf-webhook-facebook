@@ -9,19 +9,12 @@ variable "region_name" {
   default = "ru-central1"
 }
 
-variable "webhook_verification_token" {
-  description = "TODO: написать точнее, для чего он и должен ли он быть в секрете"
-  type = string
+variable "facebook-graph-api-secrets" {
+  description = "Секреты для подключения к Facebook Graph API"
+  sensitive = true
 }
 
-variable "facebook-client-secret" {
-  description = "Секрет для подключения к Facebook Graph API"
-}
-
-variable "aws-client-id" {
+variable "aws-static-access-key" {
   description = "Доступ к DynamoDB по токену от сервис-аккаунта"
-}
-
-variable "aws-client-secret" {
-  description = "Доступ к DynamoDB по токену от сервис-аккаунта"
+  sensitive = true
 }

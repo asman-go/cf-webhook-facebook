@@ -17,24 +17,29 @@ resource "yandex_function" "cf-webhook-facebook" {
   environment = {
     DOCUMENT_API_ENDPOINT = var.document_api_endpoint
     REGION_NAME = var.region_name
-    WEBHOOK_VERIFICATION_TOKEN = var.webhook_verification_token
   }
 
   secrets {
-    id = ""
-    version_id = ""
+    id = var.facebook-graph-api-secrets.secret_id
+    version_id = var.facebook-graph-api-secrets.id
     key = "client_secret"
     environment_variable = "FACEBOOK_CLIENT_SECRET"
   }
   secrets {
-    id = ""
-    version_id = ""
+    id = var.facebook-graph-api-secrets.secret_id
+    version_id = var.facebook-graph-api-secrets.id
+    key = "webhook_verification_token"
+    environment_variable = "WEBHOOK_VERIFICATION_TOKEN"
+  }
+  secrets {
+    id = var.aws-static-access-key.secret_id
+    version_id = var.aws-static-access-key.id
     key = "client_id"
     environment_variable = "AWS_ACCESS_KEY_ID"
   }
   secrets {
-    id = ""
-    version_id = ""
+    id = var.aws-static-access-key.secret_id
+    version_id = var.aws-static-access-key.id
     key = "client_secret"
     environment_variable = "AWS_SECRET_ACCESS_KEY"
   }
