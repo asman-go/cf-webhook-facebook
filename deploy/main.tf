@@ -12,7 +12,7 @@ resource "yandex_function" "cf-webhook-facebook" {
   entrypoint = "main.event_handler"
   memory = "128"  # 128 MB
   execution_timeout = "10"  # 10 seconds
-  # service_account_id = "TODO"  # Пока не знаю, для чего SA для CF
+  service_account_id = var.service-account-id  # Service Account нужен для доступа к секретам
 
   environment = {
     DOCUMENT_API_ENDPOINT = var.document_api_endpoint

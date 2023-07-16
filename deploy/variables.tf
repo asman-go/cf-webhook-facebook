@@ -18,3 +18,7 @@ variable "aws-static-access-key" {
   description = "Доступ к DynamoDB по токену от сервис-аккаунта"
   sensitive = true
 }
+
+variable "service-account-id" {
+  description = "Сервисный аккаунт для доступа к секретам"
+}
