@@ -2,6 +2,7 @@ data "archive_file" "cf-archive" {
   type = "zip"
   source_dir = "${path.module}/../"
   output_path = "${path.module}/../cf-webhook-facebook.zip"
+  excludes = [ "${path.module}/../cf-webhook-facebook.zip", "${path.module}/.git" ]
 }
 
 resource "yandex_function" "cf-webhook-facebook" {
